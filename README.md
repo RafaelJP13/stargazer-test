@@ -99,14 +99,16 @@ curl -X POST http://localhost:8000/webhooks/pipefy/card-updated \
 ```
  
 Resposta esperada (`200 OK`):
+prioridade: "prioridade_alta" ou "prioridade_normal"
  
 ```json
 {
   "message": "Card atualizado com sucesso",
   "status": "Processado",
-  "prioridade": "prioridade_alta" ou "prioridade_normal"
+  "prioridade": "prioridade_alta"
 }
 ```
+
  
 ---
  
