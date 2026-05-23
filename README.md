@@ -104,7 +104,7 @@ Resposta esperada (`200 OK`):
 {
   "message": "Card atualizado com sucesso",
   "status": "Processado",
-  "prioridade": "prioridade_alta" | "prioridade_normal"
+  "prioridade": "prioridade_alta" ou "prioridade_normal"
 }
 ```
  
