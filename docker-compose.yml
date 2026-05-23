@@ -1,0 +1,36 @@
+services:
+  api:
+    build: .
+    container_name: api
+
+    env_file:
+      - .env
+
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+
+    depends_on:
+      - postgres
+
+    volumes:
+      - .:/app
+
+  postgres:
+    image: postgres:16
+    container_name: postgres_db
+    restart: always
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+
+    ports:
+      - "${DB_PORT}:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
