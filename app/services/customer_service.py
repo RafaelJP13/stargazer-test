@@ -50,9 +50,6 @@ class CustomerService:
             }
         }
 
-        print("PIPEFY CREATE CARD MUTATION:", mutation)
-        print("PIPEFY VARIABLES:", variables)
-
         return saved_customer
 
     def get_by_email(self, email: str) -> Customer | None:
@@ -81,8 +78,5 @@ class CustomerService:
             prioridade=prioridade,
             status=customer.status
         )
-
-        print("PIPEFY UPDATE CARD FIELD MUTATION:", mutation)
-        print("PIPEFY VARIABLES:", variables)
 
         return updated_customer

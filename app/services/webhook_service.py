@@ -1,3 +1,4 @@
+from app.core.constants import PATRIMONIO_MINIMO_PRIORIDADE_ALTA
 from app.repositories.event_repository import EventRepository
 from app.services.customer_service import CustomerService
 from app.models.event import Event
@@ -24,7 +25,7 @@ class WebhookService:
 
         prioridade = (
             "prioridade_alta"
-            if customer.valor_patrimonio >= 200000
+            if customer.valor_patrimonio >= PATRIMONIO_MINIMO_PRIORIDADE_ALTA
             else "prioridade_normal"
         )
 
