@@ -5,9 +5,9 @@ class Customer(Base):
     __tablename__ = "customers"
 
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String(255), nullable=False)
-    email = Column(String(255), unique=True, nullable=False)
-    type_event = Column(String(255), nullable=False)
-    equity_value = Column(Numeric(15, 2), nullable=False)
+    cliente_nome = Column(String(255), nullable=False)
+    cliente_email = Column(String(255), unique=True, nullable=False)
+    tipo_solicitacao = Column(String(255), nullable=False)
+    valor_patrimonio = Column(Numeric(15, 2), nullable=False)
     status = Column(String(50), nullable=False)
-    priority = Column(String(50), nullable=True)
+    prioridade = Column(String(50), nullable=True)
