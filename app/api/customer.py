@@ -1,11 +1,24 @@
-from fastapi import APIRouter
-
-router = APIRouter(   
+from fastapi import APIRouter, Depends, status
+from sqlalchemy.orm import Session
+from app.database.dependencies import get_db
+from app.schemas.customer import CustomerCreateRequest, CustomerCreateResponse
+from app.services.customer_service import CustomerService
+ 
+router = APIRouter(
     prefix="/clientes",
-    tags=["Clientes"])
-
-@router.post("")
-def create_cliente():
-    return {
-        "message": "endpoint em construção"
-    }
+    tags=["Clientes"]
+)
+ 
+@router.post(
+    "",
+    response_model=CustomerCreateResponse,
+    status_code=status.HTTP_201_CREATED
+)
+def create_cliente(
+    payload: CustomerCreateRequest,
+    db: Session = Depends(get_db)
+):
+    service = CustomerService(db)
+    customer = service.create(payload)
+    return customer
+ 
