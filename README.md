@@ -1,4 +1,4 @@
-# Stargazer — Backend Técnico Mundo Invest
+# Stargazer — Backend Técnico
  
 API REST em Python (FastAPI) para gestão de clientes e integração simulada com Pipefy via GraphQL.
  
