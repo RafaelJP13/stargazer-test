@@ -18,7 +18,7 @@ class Event(Base):
     )
 
     processed_at = Column(
-        DateTime,
-        default=datetime.now(UTC),
+        DateTime(timezone=True),
+        default=lambda: datetime.now(UTC),
         nullable=False,
-    )
+)

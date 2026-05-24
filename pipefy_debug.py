@@ -208,21 +208,17 @@ def flow_create(json_only=False):
     badge("status",    customer["status"],      YELLOW)
     badge("prioridade", "(calculada no webhook — ainda None)", DIM)
 
-    section("Resumo do payload HTTP simulado")
-    http_payload = {
-        "query":     mutation,
-        "variables": variables,
-    }
+    section("Requisição HTTP para o Pipefy")
+
     print(c(DIM, "  POST https://api.pipefy.com/graphql"))
     print(c(DIM, "  Authorization: Bearer <PIPEFY_TOKEN>"))
     print(c(DIM, "  Content-Type: application/json"))
-    print()
-    print(c(DIM, "  body →"))
-    print_json_block(http_payload, "request body completo")
 
-    print()
-    print(c(GREEN + BOLD, "  ✔ Mutation createCard montada com sucesso."))
-    print()
+    section("Query enviada ao Pipefy")
+    print_graphql(mutation)
+
+    section("Variables enviadas")
+    print_json_block(variables, "variables")
 
 # ── fluxo 2: updateCardField ──────────────────────────────────────────────────
 

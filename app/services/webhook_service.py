@@ -7,7 +7,7 @@ from app.services.customer_service import CustomerService
 
 class WebhookService:
 
-    def __init__(self, db):
+    def __init__(self, db: object) -> None:
         self.event_repository = EventRepository(db)
         self.customer_service = CustomerService(db)
 
