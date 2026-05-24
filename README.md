@@ -56,6 +56,27 @@ docker-compose exec api pytest app/tests/ -v --cov=app --cov-report=term-missing
 ```
  
 ---
+
+## Ferramenta de Debug da Integração Pipefy
+
+O projeto inclui um utilitário interativo para inspeção e visualização das mutations GraphQL utilizadas na integração com Pipefy.
+
+A ferramenta permite:
+
+- simular o fluxo de criação de cards (`createCard`)
+- simular atualização de campos (`updateCardField`)
+- visualizar payloads GraphQL
+- validar regras de prioridade
+- inspecionar o fluxo de webhook
+- debugar a integração localmente
+
+### Executar com Docker Compose
+
+```bash
+docker-compose exec api python pipefy_debug.py
+```
+
+---
  
 ## Exemplos de requisição
  
