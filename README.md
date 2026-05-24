@@ -77,6 +77,50 @@ docker-compose exec api pytest app/tests/ -v
 ```bash
 docker-compose exec api pytest app/tests/ -v --cov=app --cov-report=term-missing
 ```
+---
+
+## 🗂️ Testes implementados
+
+### 🔬 Unitários 
+
+**👤 Cliente — serviço**
+- ✅ Cria um cliente com sucesso
+- ✅ Busca cliente por e-mail
+- ✅ Retorna nulo quando cliente não existe
+- ✅ Atualiza status e prioridade do cliente
+
+**🗄️ Cliente — repositório**
+- ✅ Atualiza um cliente no banco
+
+**📋 Evento — repositório**
+- ✅ Retorna verdadeiro quando evento já existe
+- ✅ Retorna falso quando evento não existe
+
+**🔁 Idempotência**
+- ✅ Bloqueia processamento duplicado do mesmo evento
+
+**💰 Regras de prioridade**
+- ✅ Define prioridade alta quando patrimônio é exatamente R$ 200.000
+- ✅ Define prioridade normal quando patrimônio é menor que R$ 200.000
+
+**🔔 Webhook — serviço**
+- ✅ Processa webhook com prioridade alta
+- ✅ Processa webhook com prioridade normal
+
+**⚠️ Webhook — erros**
+- ✅ Serviço retorna `None` internamente quando cliente não é encontrado (a API converte para `{ "detail": "Evento já processado ou cliente não encontrado" }`)
+
+---
+
+### 🌐 Integração 
+
+**👤 POST /clientes**
+- ✅ E-mail inválido retorna erro 422
+- ✅ E-mail duplicado retorna erro 409
+
+**🔔 POST /webhooks/pipefy/card-updated**
+- ✅ Webhook com cliente inexistente retorna `{ "detail": "Evento já processado ou cliente não encontrado" }`
+- ✅ Webhook duplicado retorna `{ "detail": "Evento já processado ou cliente não encontrado" }`
 
 ---
 
@@ -233,4 +277,3 @@ Credenciais e tokens seriam armazenados no Secrets Manager, evitando exposição
   - criação de cliente
   - processamento de webhook
   - idempotência de eventos
-```
