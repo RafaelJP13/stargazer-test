@@ -112,7 +112,7 @@ docker-compose exec api pytest app/tests/ -v --cov=app --cov-report=term-missing
 
 ---
 
-### 🌐 Integração (4)
+### 🌐 Integração 
 
 **👤 POST /clientes**
 - ✅ E-mail inválido retorna erro 422
