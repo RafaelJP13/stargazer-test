@@ -3,9 +3,6 @@ from fastapi import FastAPI
 from app.api.customer import router as customer_router
 from app.api.webhook import router as webhook_router
 from app.database.connection import Base, engine
-from app.models.customer import Customer
-from app.models.event import Event
-
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

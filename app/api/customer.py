@@ -6,8 +6,7 @@ from app.schemas.customer import CustomerCreateRequest, CustomerCreateResponse
 from app.services.customer_service import CustomerService
 
 router = APIRouter(
-    prefix="/clientes",
-    tags=["Clientes"]
+    prefix="/clientes"
 )
 
 @router.post(

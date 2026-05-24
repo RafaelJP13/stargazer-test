@@ -6,8 +6,7 @@ from app.schemas.webhook import PipefyWebhookRequest, PipefyWebhookResponse
 from app.services.webhook_service import WebhookService
 
 router = APIRouter(
-    prefix="/webhooks/pipefy",
-    tags=["Webhooks"]
+    prefix="/webhooks/pipefy"
 )
 
 @router.post(
