@@ -18,13 +18,23 @@ def create_cliente(
     payload: CustomerCreateRequest,
     db: Session = Depends(get_db)
 ):
+    service = CustomerService(db)
+    
     try:
-        service = CustomerService(db)
-        customer = service.create(payload)
-        return customer
-    except IntegrityError:
+        return service.create(payload)
+
+    except IntegrityError as e:
         db.rollback()
+
+        error_msg = str(e.orig).lower()
+
+        if "email" in error_msg:
+            raise HTTPException(
+                status_code=status.HTTP_409_CONFLICT,
+                detail=f"Já existe um cliente cadastrado com o e-mail '{payload.cliente_email}'.",
+            )
+
         raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,
-            detail=f"Já existe um cliente cadastrado com o e-mail '{payload.cliente_email}'."
+            detail="Já existe um registro com esses dados.",
         )
