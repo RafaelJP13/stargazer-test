@@ -77,12 +77,11 @@ docker-compose exec api pytest app/tests/ -v
 ```bash
 docker-compose exec api pytest app/tests/ -v --cov=app --cov-report=term-missing
 ```
-
 ---
 
 ## 🗂️ Testes implementados
 
-### 🔬 Unitários (13)
+### 🔬 Unitários 
 
 **👤 Cliente — serviço**
 - ✅ Cria um cliente com sucesso
@@ -109,7 +108,21 @@ docker-compose exec api pytest app/tests/ -v --cov=app --cov-report=term-missing
 - ✅ Processa webhook com prioridade normal
 
 **⚠️ Webhook — erros**
-- ✅ Retorna nulo quando cliente não é encontrad
+- ✅ Serviço retorna `None` internamente quando cliente não é encontrado (a API converte para `{ "detail": "Evento já processado ou cliente não encontrado" }`)
+
+---
+
+### 🌐 Integração (4)
+
+**👤 POST /clientes**
+- ✅ E-mail inválido retorna erro 422
+- ✅ E-mail duplicado retorna erro 409
+
+**🔔 POST /webhooks/pipefy/card-updated**
+- ✅ Webhook com cliente inexistente retorna `{ "detail": "Evento já processado ou cliente não encontrado" }`
+- ✅ Webhook duplicado retorna `{ "detail": "Evento já processado ou cliente não encontrado" }`
+
+---
 
 ## 🐞 Ferramenta de Debug da Integração Pipefy
 
