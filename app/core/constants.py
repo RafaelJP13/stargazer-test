@@ -1,3 +1,7 @@
 from decimal import Decimal
 
+# VALUES
 PATRIMONIO_MINIMO_PRIORIDADE_ALTA = Decimal("200000.00")
+
+# MESSAGES
+DATABASE_URL_NAO_DEFINIDA = "DATABASE_URL não definida no ambiente."
