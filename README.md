@@ -233,4 +233,3 @@ Credenciais e tokens seriam armazenados no Secrets Manager, evitando exposição
   - criação de cliente
   - processamento de webhook
   - idempotência de eventos
-```
