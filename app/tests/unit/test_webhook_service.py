@@ -1,9 +1,11 @@
 from decimal import Decimal
+
+from sqlalchemy.orm import Session
 from app.services.webhook_service import WebhookService
 from app.models.customer import Customer
 
 
-def test_webhook_priority_high(db):
+def test_webhook_priority_high(db: Session):
 
     customer = Customer(
         cliente_nome="Teste",
@@ -30,7 +32,7 @@ def test_webhook_priority_high(db):
     assert result.prioridade == "prioridade_alta"
 
 
-def test_webhook_priority_normal(db):
+def test_webhook_priority_normal(db: Session):
 
     customer = Customer(
         cliente_nome="Teste 2",

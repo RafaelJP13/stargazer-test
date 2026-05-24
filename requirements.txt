@@ -13,3 +13,5 @@ pytest-cov
 alembic
 
 python-dotenv
+
+httpx>=0.28.0

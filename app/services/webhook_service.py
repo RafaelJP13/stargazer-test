@@ -1,7 +1,9 @@
 from app.core.constants import PATRIMONIO_MINIMO_PRIORIDADE_ALTA
+from app.models.customer import Customer
+from app.models.event import Event
 from app.repositories.event_repository import EventRepository
 from app.services.customer_service import CustomerService
-from app.models.event import Event
+
 
 class WebhookService:
 
@@ -9,7 +11,10 @@ class WebhookService:
         self.event_repository = EventRepository(db)
         self.customer_service = CustomerService(db)
 
-    def process(self, payload: dict):
+    def process(
+        self,
+        payload: dict[str, str]
+    ) -> Customer | None:
 
         event_id = payload["event_id"]
 
@@ -20,7 +25,7 @@ class WebhookService:
             payload["cliente_email"]
         )
 
-        if not customer:
+        if customer is None:
             return None
 
         prioridade = (
