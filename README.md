@@ -111,12 +111,6 @@ docker-compose exec api python pipefy_debug.py
 docker-compose exec api python pipefy_debug.py --mode create
 ```
 
-#### 🔄 Fluxo de atualização via webhook
-
-```bash
-docker-compose exec api python pipefy_debug.py --mode update
-```
-
 #### 📦 Output JSON puro
 
 ```bash
