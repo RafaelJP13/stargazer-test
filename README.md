@@ -80,6 +80,37 @@ docker-compose exec api pytest app/tests/ -v --cov=app --cov-report=term-missing
 
 ---
 
+## 🗂️ Testes implementados
+
+### 🔬 Unitários (13)
+
+**👤 Cliente — serviço**
+- ✅ Cria um cliente com sucesso
+- ✅ Busca cliente por e-mail
+- ✅ Retorna nulo quando cliente não existe
+- ✅ Atualiza status e prioridade do cliente
+
+**🗄️ Cliente — repositório**
+- ✅ Atualiza um cliente no banco
+
+**📋 Evento — repositório**
+- ✅ Retorna verdadeiro quando evento já existe
+- ✅ Retorna falso quando evento não existe
+
+**🔁 Idempotência**
+- ✅ Bloqueia processamento duplicado do mesmo evento
+
+**💰 Regras de prioridade**
+- ✅ Define prioridade alta quando patrimônio é exatamente R$ 200.000
+- ✅ Define prioridade normal quando patrimônio é menor que R$ 200.000
+
+**🔔 Webhook — serviço**
+- ✅ Processa webhook com prioridade alta
+- ✅ Processa webhook com prioridade normal
+
+**⚠️ Webhook — erros**
+- ✅ Retorna nulo quando cliente não é encontrad
+
 ## 🐞 Ferramenta de Debug da Integração Pipefy
 
 O projeto inclui um utilitário interativo para inspeção e visualização das mutations GraphQL utilizadas na integração com Pipefy.
