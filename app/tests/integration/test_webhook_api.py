@@ -51,3 +51,35 @@ def test_webhook_duplicate_event_returns_message(client):
     assert second_response.json() == {
         "detail": "Evento já processado ou cliente não encontrado"
     }
+
+
+def test_webhook_happy_path_processes_customer_successfully(client):
+    create_response = client.post(
+        "/clientes",
+        json={
+            "cliente_nome": "João Silva",
+            "cliente_email": "joao@email.com",
+            "tipo_solicitacao": "Investimento",
+            "valor_patrimonio": 250000,
+        },
+    )
+
+    assert create_response.status_code == 201
+
+    webhook_response = client.post(
+        "/webhooks/pipefy/card-updated",
+        json={
+            "event_id": "evt_123",
+            "card_id": "card_456",
+            "cliente_email": "joao@email.com",
+            "timestamp": "2026-05-18T12:00:00Z",
+        },
+    )
+
+    assert webhook_response.status_code == 200
+
+    body = webhook_response.json()
+
+    assert body["status"] == "Processado"
+    assert body["prioridade"] == "prioridade_alta"
+    assert body["message"] == "Card atualizado com sucesso"
