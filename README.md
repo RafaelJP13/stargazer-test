@@ -26,6 +26,10 @@ API REST em Python (FastAPI) para gestão de clientes e integração simulada co
 
 ### ⚙️ 1. Clone o repositório e configure o ambiente
 
+```env
+git clone https://github.com/RafaelJP13/stargazer-test.git
+```
+
 Copie o `.env.example` para `.env` com as credenciais desejadas:
 
 ```env
