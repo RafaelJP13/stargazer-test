@@ -38,7 +38,7 @@ class Customer(Base):
         nullable=False
     )
 
-    prioridade: Mapped[str | None] = mapped_column(
+    prioridade: Mapped[str] = mapped_column(
         String(50),
-        nullable=True
+        nullable=False
     )
