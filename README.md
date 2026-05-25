@@ -60,13 +60,7 @@ docker-compose up --build
 
 ### 🌐 Acesse a aplicação
 
-API:
-
-```text
-http://localhost:8000
-```
-
-Swagger:
+API/Swagger:
 
 ```text
 http://localhost:8000/docs
