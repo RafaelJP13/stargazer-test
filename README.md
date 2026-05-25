@@ -44,6 +44,8 @@ DB_NAME=postgres_db
 DB_USER=postgres
 DB_PASSWORD=postgres
 DATABASE_URL=postgresql://postgres:postgres@postgres:5432/postgres_db
+PIPE_ID = "PIPE_ID_AQUI"
+
 ```
 
 ---
