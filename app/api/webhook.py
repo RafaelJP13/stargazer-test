@@ -16,7 +16,7 @@ router = APIRouter(
 def process_card_updated(
     payload: PipefyWebhookRequest,
     db: Session = Depends(get_db)
-):
+ ) -> PipefyWebhookResponse | JSONResponse:
     service = WebhookService(db)
     result = service.process(payload.model_dump())
 

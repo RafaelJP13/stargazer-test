@@ -17,7 +17,7 @@ router = APIRouter(
 def create_cliente(
     payload: CustomerCreateRequest,
     db: Session = Depends(get_db)
-):
+ ) -> CustomerCreateResponse:
     service = CustomerService(db)
     
     try:
