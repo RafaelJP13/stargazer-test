@@ -3,8 +3,9 @@ from enum import Enum
 from pydantic import BaseModel, EmailStr, Field
 
 class TipoSolicitacao(str, Enum):
-    atualizacao_cadastral = "Atualização Cadastral"
-
+    atualizacao_cadastral = "Atualização cadastral"
+    investimento = "Investimento"
+    
 class CustomerCreateRequest(BaseModel):
     cliente_nome: str = Field(
         ...,
