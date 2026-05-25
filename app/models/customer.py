@@ -25,7 +25,8 @@ class Customer(Base):
 
     tipo_solicitacao: Mapped[str] = mapped_column(
         String(255),
-        nullable=False
+        nullable=False,
+        default="Atualização Cadastral"
     )
 
     valor_patrimonio: Mapped[Decimal] = mapped_column(

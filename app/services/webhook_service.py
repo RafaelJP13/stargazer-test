@@ -1,4 +1,4 @@
-from app.core.constants import PATRIMONIO_MINIMO_PRIORIDADE_ALTA
+from app.core.constants import PATRIMONIO_MINIMO_PRIORIDADE_ALTA, PRIORIDADE_ALTA, PRIORIDADE_NORMAL
 from app.models.customer import Customer
 from app.models.event import Event
 from app.repositories.event_repository import EventRepository
@@ -29,9 +29,9 @@ class WebhookService:
             return None
 
         prioridade = (
-            "prioridade_alta"
+            PRIORIDADE_ALTA 
             if customer.valor_patrimonio >= PATRIMONIO_MINIMO_PRIORIDADE_ALTA
-            else "prioridade_normal"
+            else PRIORIDADE_NORMAL
         )
 
         updated_customer = self.customer_service.update_status_and_priority(
