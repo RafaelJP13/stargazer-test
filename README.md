@@ -28,6 +28,9 @@ API REST em Python (FastAPI) para gestão de clientes e integração simulada co
 
 ```env
 git clone https://github.com/RafaelJP13/stargazer-test.git
+```
+
+```env
 cd stargazer-test
 ```
 
