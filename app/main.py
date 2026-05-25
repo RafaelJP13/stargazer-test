@@ -19,25 +19,13 @@ app = FastAPI(
 
 app.add_exception_handler(
     RequestValidationError,
-    validation_exception_handler
+    validation_exception_handler,
 )
 
-@app.get(
-    "/health",
-    tags=["Health"]
-)
+@app.get("/health", tags=["Health"])
 def health():
-    return {
-        "status": "ok"
-    }
+    return {"status": "ok"}
 
 
-app.include_router(
-    customer_router,
-    tags=["Clientes"]
-)
-
-app.include_router(
-    webhook_router,
-    tags=["Webhooks"]
-)
+app.include_router(customer_router)
+app.include_router(webhook_router)

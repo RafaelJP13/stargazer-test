@@ -1,6 +1,5 @@
+import os
 from app.models.customer import Customer
-
-PIPE_ID = "PIPE_ID_AQUI"
 
 def build_create_card_mutation() -> str:
     return """
@@ -13,11 +12,10 @@ def build_create_card_mutation() -> str:
     }
     """.strip()
 
-
 def build_create_card_variables(customer: Customer) -> dict[str, object]:
     return {
         "input": {
-            "pipe_id": PIPE_ID,
+            "pipe_id": os.getenv("PIPE_ID"),
             "fields_attributes": [
                 {
                     "field_id": "cliente_nome",
