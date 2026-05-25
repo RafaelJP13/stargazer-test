@@ -151,14 +151,6 @@ docker-compose exec api python pipefy_debug.py
 
 ---
 
-### 🔀 Fluxos disponíveis
-
-#### 🧾 Fluxo de criação de cliente
-
-```bash
-docker-compose exec api python pipefy_debug.py
-```
-
 #### 📦 Output JSON puro
 
 ```bash
